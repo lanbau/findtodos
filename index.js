@@ -1,10 +1,9 @@
 const fs = require('fs')
 
 module.exports = (path, callback) => {
-
   var arr = []
   checkFile(path, arr)
-  console.log(arr)
+  callback(arr)
 }
 
 function checkFile (path, arr) {
@@ -14,7 +13,10 @@ function checkFile (path, arr) {
       checkFile(path + '/' + file, arr)
     }
     if (file.includes('.js')) {
-      arr.push(path + '/' + file)
+      const content = fs.readFileSync(path + '/' + file, 'utf8')
+      if (content.includes('TODO')) {
+        arr.push(path + '/' + file)
+      }
     }
   })
 }

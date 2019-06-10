@@ -9,16 +9,17 @@ chai.use(deepEqualInAnyOrder);
 
 describe('Find Todos!', () => {
 
-  it ('should return 3 folders', () => {
+  it ('should print absolute paths of files containing string TODO', () => {
     findtodos(filePath, (files) => {
       const array = [
-        '/Users/lanbau/code/interview/findtodos/somedir1',
-        '/Users/lanbau/code/interview/findtodos/somedir2',
-        '/Users/lanbau/code/interview/findtodos/somedir3',
-
+        '/Users/lanbau/code/interview/findtodos/somedir/somedir1/somemodule/somefile.js',
+        '/Users/lanbau/code/interview/findtodos/somedir/somedir1/somemodule/someotherfile.js',
+        '/Users/lanbau/code/interview/findtodos/somedir/somedir2/another_dir/index.js',
+        '/Users/lanbau/code/interview/findtodos/somedir/somedir2/another_dir/yet_another_dir/index.js',
+        '/Users/lanbau/code/interview/findtodos/somedir/somedir2/index.js',
+        '/Users/lanbau/code/interview/findtodos/somedir/somedir3/another_file.js'
       ]
-      // expect(files).to.deep.equalInAnyOrder(array)
-      console.log(files)
+      expect(files).to.deep.equalInAnyOrder(array)
     })
   })
 
