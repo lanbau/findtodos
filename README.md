@@ -1,6 +1,13 @@
-# Offline File Generators
 # Print File Paths That Contains "TODO"
 
+# Instructions
+You need node version from v10 onwards
+```
+npm install
+
+// To Run Test
+npm run test
+```
 
 # Good To Know
 ```
