@@ -1,14 +1,14 @@
-var chai = require('chai')
+const chai = require('chai')
 const deepEqualInAnyOrder = require('deep-equal-in-any-order')
-var expect = chai.expect
-var findtodos = require('../index.js')
+const expect = chai.expect
+const findtodos = require('../index.js')
 const path = require('path')
 const fs = require('fs')
-var filePath = path.join(__dirname, '../somedir')
-chai.use(deepEqualInAnyOrder);
+const filePath = path.join(__dirname, '../somedir')
+
+chai.use(deepEqualInAnyOrder)
 
 describe('Find Todos!', () => {
-
   it ('should print absolute paths of files containing string TODO', () => {
     findtodos(filePath, (files) => {
       const array = [
@@ -22,6 +22,4 @@ describe('Find Todos!', () => {
       expect(files).to.deep.equalInAnyOrder(array)
     })
   })
-
-
 })

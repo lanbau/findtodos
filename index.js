@@ -6,7 +6,7 @@ module.exports = (path, callback) => {
   callback(arr)
 }
 
-function checkFile (path, arr) {
+const checkFile = (path, arr) => {
   let files = fs.readdirSync (path)
   files.forEach(file => {
     if (!file.includes('.js')) {
