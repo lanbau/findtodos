@@ -7,7 +7,9 @@ var fs = require('fs'),
 fs.readdir(filePath, (err, files) => {
   files.forEach(file => {
     if (file.includes('.js') && !file.includes('.json')) {
-      console.log(file)
+      fs.readFile(file, 'utf8', (err, contents) => {
+        console.log(contents)
+      })
     }
   })
 })
