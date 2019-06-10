@@ -3,12 +3,17 @@ var fs = require('fs'),
     path = require('path'),
     filePath = path.join(__dirname, '')
 
-var dir = './tmp'
 
-if (!fs.existsSync(dir)){
-    fs.mkdirSync(dir)
-}
+// fs.readdir(filePath, (err, files) => {
+//   files.forEach(file => {
+//     console.log(filePath + '.' + file)
+//   })
+// })
 
+// var dir = './tmp'
+// if (!fs.existsSync(dir)){
+//     fs.mkdirSync(dir)
+// }
 
 // fs.readdir(filePath, (err, files) => {
 //   files.forEach(file => {
