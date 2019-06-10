@@ -1,9 +1,14 @@
-var assert = require('assert')
+var chai = require('chai')
+var assert = chai.assert
+const mock = require('mock-fs')
+const fs = require('fs')
 
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1, 2, 3].indexOf(4), -1)
+describe('mock()', function() {
+    it('configures the real fs module with a mock file system', function() {
+      mock({
+        'fake-file-for-testing-only': 'file content'
+      })
+      assert.isTrue(fs.existsSync('fake-file-for-testing-only'))
+      mock.restore()
     })
-  })
 })
