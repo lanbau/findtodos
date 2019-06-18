@@ -5,21 +5,24 @@ const findtodos = require('../index.js')
 const path = require('path')
 const fs = require('fs')
 const filePath = path.join(__dirname, '../somedir')
-
+console.log(filePath)
 chai.use(deepEqualInAnyOrder)
 
 describe('Find Todos!', () => {
   it ('should print absolute paths of files containing string TODO', () => {
     findtodos(filePath, (files) => {
       const array = [
-        '/Users/lanbau/code/interview/findtodos/somedir/somedir1/somemodule/somefile.js',
-        '/Users/lanbau/code/interview/findtodos/somedir/somedir1/somemodule/someotherfile.js',
-        '/Users/lanbau/code/interview/findtodos/somedir/somedir2/another_dir/index.js',
-        '/Users/lanbau/code/interview/findtodos/somedir/somedir2/another_dir/yet_another_dir/index.js',
-        '/Users/lanbau/code/interview/findtodos/somedir/somedir2/index.js',
-        '/Users/lanbau/code/interview/findtodos/somedir/somedir3/another_file.js'
+        '/somedir1/somemodule/somefile.js',
+        '/somedir1/somemodule/someotherfile.js',
+        '/somedir2/another_dir/index.js',
+        '/somedir2/another_dir/yet_another_dir/index.js',
+        '/somedir2/index.js',
+        '/somedir3/another_file.js'
       ]
-      expect(files).to.deep.equalInAnyOrder(array)
+      const arrayNew = array.map(item => {
+        return filePath + item
+      })
+      expect(files).to.deep.equalInAnyOrder(arrayNew)
     })
   })
 })

@@ -1,22 +1,27 @@
 const fs = require('fs')
 
 module.exports = (path, callback) => {
-  var arr = []
+  const arr = []
   checkFile(path, arr)
   callback(arr)
 }
 
 const checkFile = (path, arr) => {
-  let files = fs.readdirSync (path)
-  files.forEach(file => {
-    if (!file.includes('.js')) {
-      checkFile(path + '/' + file, arr)
-    }
-    if (file.includes('.js')) {
-      const content = fs.readFileSync(path + '/' + file, 'utf8')
-      if (content.includes('TODO')) {
-        arr.push(path + '/' + file)
+  fs.readdir (path, (files) => {
+    console.log(files)
+    files.forEach(file => {
+      if (!file.includes('.js')) {
+        checkFile(path + '/' + file, arr)
       }
-    }
+      if (file.includes('.js')) {
+        fs.readFile(path + '/' + file, 'utf8', (content) => {
+          if (content.includes('TODO')) {
+            arr.push(path + '/' + file)
+          }
+        })
+        
+      }
+    })
   })
+  
 }
